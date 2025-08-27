@@ -1,0 +1,35 @@
+[
+    {
+        "name": "ray",
+        "number": "0599",
+        "fault": "screen",
+        "technician": "Unassigned",
+        "image ": [
+            "C:\\Users\\Raymond\\Desktop\\progess webapp\\images\\commm.jpeg",
+            "C:\\Users\\Raymond\\Desktop\\progess webapp\\images\\commm.jpeg",
+            "C:\\Users\\Raymond\\Desktop\\progess webapp\\images\\dim.jpg",
+            "C:\\Users\\Raymond\\Desktop\\progess webapp\\images\\dim.jpg"
+        ]
+    },
+    {
+        "name": "Jake",
+        "number": "0557",
+        "fault": "screen",
+        "technician": "kojo",
+        "image": [
+            "0557_image0.jpeg",
+            "0557_luxmi.jpeg",
+            "0557_nami.jpg"
+        ]
+    },
+    {
+        "name": "RayMd",
+        "number": "0244",
+        "fault": "gaps",
+        "technician": "kojo",
+        "image": [
+            "0244_d2.jpg",
+            "0244_pad.png"
+        ]
+    }
+]

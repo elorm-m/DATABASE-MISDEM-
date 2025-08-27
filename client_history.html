@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Client Service History - TechFix Pro</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        /* Copy all the CSS styles from your index.html here */
+        /* This ensures consistent styling across both pages */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --secondary-gradient: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            --accent-gradient: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            --dark-gradient: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+            --success-gradient: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+            --warning-gradient: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            
+            --text-primary: #2c3e50;
+            --text-secondary: #7f8c8d;
+            --text-light: #ffffff;
+            --border-color: #e8ecef;
+            --bg-light: #f8f9fa;
+            --shadow-light: 0 2px 10px rgba(0,0,0,0.1);
+            --shadow-medium: 0 8px 30px rgba(0,0,0,0.12);
+            --shadow-heavy: 0 15px 35px rgba(0,0,0,0.15);
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-primary);
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 100vh;
+        }
+
+        /* Header & Navigation */
+        .header {
+            background: var(--primary-gradient);
+            box-shadow: var(--shadow-medium);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 70px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            color: var(--text-light);
+            font-size: 24px;
+            font-weight: 700;
+            text-decoration: none;
+        }
+
+        .logo i {
+            font-size: 32px;
+            background: var(--accent-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            align-items: center;
+        }
+
+        .nav-link {
+            color: var(--text-light);
+            text-decoration: none;
+            padding: 10px 20px;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+
+        .nav-link:hover {
+            background: rgba(255,255,255,0.2);
+            transform: translateY(-2px);
+        }
+
+        /* Main Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        /* History Header */
+        .history-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .page-title {
+            font-size: 2.5rem;
+            font-weight: 800;
+            background: var(--primary-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .history-actions {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+        }
+         .search-section {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: var(--shadow-medium);
+            margin-bottom: 40px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .search-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--primary-gradient);
+        }
+
+        .search-form {
+            display: flex;
+            gap: 15px;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .search-input {
+            flex: 1;
+            padding: 18px 24px;
+            border: 2px solid var(--border-color);
+            border-radius: 50px;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            background: var(--bg-light);
+        }
+
+        .search-input:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+            background: white;
+        }
+
+        .search-btn {
+            background: var(--primary-gradient);
+            border: none;
+            padding: 18px 30px;
+            border-radius: 50px;
+            color: white;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .search-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-medium);
+        }
+
+
+        /* Client Cards */
+        .client-grid {
+            display: grid;
+            gap: 30px;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+        }
+
+        .client-card {
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: var(--shadow-light);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .client-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--primary-gradient);
+        }
+
+        .client-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-heavy);
+        }
+
+        .client-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 20px;
+        }
+
+        .client-info h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 5px;
+        }
+
+        .client-date {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            margin-bottom: 5px;
+        }
+
+        .client-phone {
+            color: var(--text-secondary);
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .status-badge {
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .status-collected {
+            background: var(--primary-gradient);
+            color: white;
+        }
+
+        .status-completed {
+            background: var(--success-gradient);
+            color: white;
+        }
+
+        .client-details {
+            margin: 20px 0;
+        }
+        .collector-contact {
+            color: var(--text-secondary);
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: 5px;
+}
+
+        .detail-row {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 12px;
+            padding: 12px;
+            background: var(--bg-light);
+            border-radius: 12px;
+        }
+
+        .detail-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 14px;
+        }
+
+        .device-icon {
+            background: var(--secondary-gradient);
+        }
+
+        .issue-icon {
+            background: var(--warning-gradient);
+        }
+
+        .collector-icon {
+            background: var(--accent-gradient);
+        }
+
+        .detail-content {
+            flex: 1;
+        }
+
+        .detail-label {
+            font-size: 12px;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+
+        .detail-value {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        /* Empty State */
+        .empty-state {
+            text-align: center;
+            padding: 80px 20px;
+            background: white;
+            border-radius: 20px;
+            box-shadow: var(--shadow-light);
+        }
+
+        .empty-icon {
+            font-size: 4rem;
+            color: var(--text-secondary);
+            margin-bottom: 20px;
+        }
+
+        .empty-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: var(--text-primary);
+        }
+
+        .empty-description {
+            color: var(--text-secondary);
+            margin-bottom: 30px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px 15px;
+            }
+
+            .history-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .page-title {
+                font-size: 2rem;
+            }
+
+            .nav-links {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="nav-container">
+            <a href="/" class="logo">
+                <i class="fas fa-microchip"></i>
+                TechFix Pro
+            </a>
+            <nav class="nav-links">
+                <a href="/" class="nav-link">
+                    <i class="fas fa-search"></i>
+                    Search Clients
+                </a>
+                <a href="/add_client" class="nav-link">
+                    <i class="fas fa-plus"></i>
+                    Add Client
+                </a>
+                <a href="/client_history" class="nav-link" style="background: rgba(255,255,255,0.2);">
+                    <i class="fas fa-history"></i>
+                    History
+                </a>
+                
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- Search Section -->
+        <section class="search-section">
+            <form action="/search_history" method="get" class="search-form">
+                <input type="text" name="q" class="search-input" 
+                       placeholder="Search by client name, contact number, device name, or issue..." 
+                       value="{{ search_term if search_term else '' }}" required>
+                <button type="submit" class="search-btn">
+                    <i class="fas fa-search"></i>
+                    Search History
+                </button>
+            </form>
+        </section>
+
+        {% if search_term %}
+        <!-- Results Header -->
+        <div class="results-header">
+            <div>
+                <h1 class="results-title">History Search Results</h1>
+                <p style="color: var(--text-secondary); margin-top: 5px;">
+                    Results for "<strong>{{ search_term }}</strong>"
+                </p>
+            </div>
+            {% if history %}
+            <div class="results-count">
+                {{ history|length }} record{{ 's' if history|length != 1 }}
+            </div>
+            {% endif %}
+        </div>
+        {% else %}
+        <!-- History Header -->
+        <div class="history-header">
+            <h1 class="page-title">Client Service History</h1>
+            <div class="history-actions">
+                <a href="/" class="nav-link" style="background: white; color: var(--text-primary);">
+                    <i class="fas fa-arrow-left"></i>
+                    Back to Dashboard
+                </a>
+               
+            </div>
+        </div>
+        {% endif %}
+
+        {% if history %}
+        <!-- Client Grid -->
+        <div class="client-grid">
+            {% for record in history %}
+           <div class="client-card">
+    <div class="client-header">
+        <div class="client-info">
+            <h3>{{ record.name }}</h3>
+            <div class="client-date">{{ record.date }}</div>
+            
+            <!-- Client Contact (shown for both record types) -->
+            <div class="client-phone">
+                <i class="fas fa-user"></i>
+                Client: {{ record.data.client_contact if record.type == 'service_record' else record.data.number }}
+            </div>
+            
+            <!-- Collector Contact (only shown for service records) -->
+            {% if record.type == 'service_record' %}
+            <div class="collector-contact">
+                <i class="fas fa-user-tie"></i>
+                Collector: {{ record.data.collector_name }} ({{ record.data.collector_contact }})
+            </div>
+            {% endif %}
+        </div>
+        <div class="status-badge status-{{ 'collected' if record.type == 'service_record' else 'completed' }}">
+            {{ 'Collected' if record.type == 'service_record' else 'Completed' }}
+        </div>
+    </div>
+
+    <div class="client-details">
+        {% if record.type == 'service_record' %}
+        <div class="detail-row">
+            <div class="detail-icon device-icon">
+                <i class="fas fa-laptop"></i>
+            </div>
+            <div class="detail-content">
+                <div class="detail-label">Device</div>
+                <div class="detail-value">{{ record.data.device_name }}</div>
+            </div>
+        </div>
+
+        <div class="detail-row">
+            <div class="detail-icon issue-icon">
+                <i class="fas fa-exclamation-triangle"></i>
+            </div>
+            <div class="detail-content">
+                <div class="detail-label">Issue</div>
+                <div class="detail-value">{{ record.data.device_issue }}</div>
+            </div>
+        </div>
+        {% else %}
+        <div class="detail-row">
+            <div class="detail-icon device-icon">
+                <i class="fas fa-tools"></i>
+            </div>
+            <div class="detail-content">
+                <div class="detail-label">Technician</div>
+                <div class="detail-value">{{ record.data.assigned_technician }}</div>
+            </div>
+        </div>
+
+        <div class="detail-row">
+            <div class="detail-icon issue-icon">
+                <i class="fas fa-exclamation-triangle"></i>
+            </div>
+            <div class="detail-content">
+                <div class="detail-label">Fault</div>
+                <div class="detail-value">{{ record.data.fault }}</div>
+
+            </div>
+             
+        </div>
+        <div class="client-actions" style="margin-top: 15px; display: flex; gap: 10px;">
+            <a href="{{ url_for('delete_record', record_id=record['id']) }}" onclick="return confirm('Are you sure you want to delete this record?');" 
+                style="display:inline-block; padding:10px 18px; border-radius:25px; font-weight:600; background:linear-gradient(135deg, #e74c3c 0%, #c0392b 100%); color:#fff; 
+                text-decoration:none; transition:all 0.3s ease; box-shadow:0 2px 6px rgba(0,0,0,0.15);">
+                Delete
+            </a>
+
+        </div>
+        {% endif %}
+    </div>
+</div>
+            {% endfor %}
+        </div>
+        {% else %}
+        <!-- Empty State -->
+        <div class="empty-state">
+            <div class="empty-icon">
+                <i class="fas fa-{{ 'search' if search_term else 'history' }}"></i>
+            </div>
+            <h2 class="empty-title">
+                {% if search_term %}
+                No Results Found
+                {% else %}
+                No Service History Yet
+                {% endif %}
+            </h2>
+            <p class="empty-description">
+                {% if search_term %}
+                We couldn't find any records matching your search criteria. 
+                Try adjusting your search terms or check the spelling.
+                {% else %}
+                Client service records will appear here when available.
+                {% endif %}
+            </p>
+            <a href="/service-form" class="nav-link" style="display: inline-flex; background: var(--primary-gradient); color: white;">
+                <i class="fas fa-plus"></i>
+                Create Service Record
+            </a>
+        </div>
+        {% endif %}
+    </main>
+
+    <script>
+        // Simple animation for cards
+        document.addEventListener('DOMContentLoaded', function() {
+            const cards = document.querySelectorAll('.client-card');
+            cards.forEach((card, index) => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(20px)';
+                card.style.transition = `all 0.4s ease ${index * 0.05}s`;
+                setTimeout(() => {
+                    card.style.opacity = '1';
+                    card.style.transform = 'translateY(0)';
+                }, 50);
+            });
+        });
+    </script>
+</body>
+</html>
+</html>

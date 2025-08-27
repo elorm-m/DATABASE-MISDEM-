@@ -1,0 +1,108 @@
+[
+  {
+    "client_name": "ray",
+    "machine_type": "Laptop",
+    "machine_name": "Asus spectra",
+    "receiver_name": "Kwame",
+    "receiver_contact": "025778",
+    "date": "2025-07-10",
+    "status": "Collected"
+  },
+  {
+    "client_name": "ray",
+    "machine_type": "Smartphone",
+    "machine_name": "lenovo",
+    "receiver_name": "....",
+    "receiver_contact": "....",
+    "date": "2025-07-10",
+    "status": "Collected"
+  },
+  {
+    "client_name": "Mark",
+    "client_contact": "02479",
+    "device_name": "Asus",
+    "device_issue": "Gabs",
+    "collector_name": "Kwame",
+    "collector_contact": "05448",
+    "collection_date": "2025-07-22",
+    "status": "Collected",
+    "submission_date": "2025-07-19"
+  },
+  {
+    "client_name": "Mark",
+    "client_contact": "02479",
+    "device_name": "Asus",
+    "device_issue": "Gabs",
+    "collector_name": "Kwame",
+    "collector_contact": "05448",
+    "collection_date": "2025-07-22",
+    "status": "Collected",
+    "submission_date": "2025-07-19"
+  },
+  {
+    "client_name": "ray",
+    "client_contact": "0557",
+    "device_name": "Dell",
+    "device_issue": "heating",
+    "collector_name": "kwesi",
+    "collector_contact": "0224",
+    "collection_date": "2025-07-18",
+    "status": "Collected",
+    "submission_date": "2025-07-19"
+  },
+  {
+    "client_name": "rayn",
+    "client_contact": "0557",
+    "device_name": "lenovo",
+    "device_issue": "crushing",
+    "collector_name": "agya",
+    "collector_contact": "0224",
+    "collection_date": "2025-07-19",
+    "status": "Collected",
+    "submission_date": "2025-07-19"
+  },
+  {
+    "client_name": "rayn",
+    "client_contact": "0557",
+    "device_name": "lenovo",
+    "device_issue": "crushing",
+    "collector_name": "agya",
+    "collector_contact": "0224",
+    "collection_date": "2025-07-19",
+    "status": "Collected",
+    "submission_date": "2025-07-19"
+  },
+  {
+    "client_name": "Gob3",
+    "client_contact": "0547",
+    "device_name": "Hp",
+    "device_issue": "Battrey",
+    "collector_name": "Gifty",
+    "collector_contact": "02334",
+    "collection_date": "2025-07-16",
+    "status": "Collected",
+    "submission_date": "2025-07-19"
+  },
+  {
+    "client_name": "mamani",
+    "client_contact": "0202204081",
+    "device_name": "Asus",
+    "device_issue": "Screen",
+    "collector_name": "Ray",
+    "collector_contact": "02554",
+    "collection_date": "2025-07-19",
+    "status": "Collected",
+    "submission_date": "2025-07-19"
+  },
+  {
+    "client_name": "Raymond",
+    "client_contact": "0256335442",
+    "device_name": "lenovo",
+    "device_issue": "Glitch",
+    "collector_name": "Richard",
+    "collector_contact": "055742351",
+    "collection_date": "2025-07-17",
+    "status": "Collected",
+    "submission_date": "2025-07-19"
+  }
+]
